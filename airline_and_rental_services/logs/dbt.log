@@ -2305,3 +2305,31 @@ select distinct
 Finished 'compile' with 1 warning and 1 error for target 'dev' [2.1s]
 Processed: 11 models | 2 sources
 Summary: 11 total | 10 success | 1 error
+==================== 2025-12-02 14:44:48.396255 | 019adf85-f08a-7023-b223-b92776239096 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+14:44:49.013678 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:44:49.540136 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:44:49.990936 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers,
+        lateral flatten(input=>VALUE) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:44:50.109684 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:44:50.253470 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [1.9s]
+Processed: 11 models | 2 sources
+Summary: 11 total | 11 success

@@ -16,3 +16,4 @@ select
     ) as PASSENGER_INFO
 from
     {{ref("marts_airline_and_rental_summary")}}
+limit 10000
