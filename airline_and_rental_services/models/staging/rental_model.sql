@@ -1,0 +1,14 @@
+select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    {{source('rental_data_source','cars')}}

@@ -1,0 +1,29 @@
+name: airline_and_rental_services
+version: '1.0.0'
+
+profile: airline_and_rental_services
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  airline_and_rental_services:
+    +schema: raw
+
+models:
+  airline_and_rental_services:
+    # Materialize staging models as views, and marts as tables
+    staging:
+      +materialized: table
+      +snowflake_warehouse: demo_ask_wh
+    intermediate:
+      +materialized: table
+      +snowflake_warehouse: demo_ask_wh
+    marts:
+      +materialized: table
+      +snowflake_warehouse: demo_ask_wh

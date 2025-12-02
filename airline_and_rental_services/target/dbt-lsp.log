@@ -1,0 +1,163 @@
+==================== 2025-12-02 11:14:53.198261 | 85fdb618-a384-4c19-9a8c-ea3541c440ee ====================
+11:14:53.198335 [info ]: Starting dbt LSP server
+11:14:53.198370 [info ]: Connecting to LSP client on port 8000
+11:14:53.198546 [info ]: Successfully connected to LSP client
+11:14:53.198563 [info ]: Creating LSP service...
+11:14:53.302849 [info ]: Creating LSP server...
+11:14:53.302881 [info ]: Starting LSP server...
+11:14:54.831805 [info ]: Cached model count updated: 12 models (estimate)
+11:14:55.031844 [info ]: Cached model count updated: 12 models (accurate)
+11:14:55.782396 [info ]: Cached model count updated: 12 models (accurate)
+11:16:00.745344 [info ]: Cached model count updated: 12 models (estimate)
+11:16:01.378006 [info ]: Cached model count updated: 12 models (estimate)
+11:16:01.539615 [info ]: Cached model count updated: 12 models (accurate)
+11:16:02.217216 [info ]: Cached model count updated: 12 models (accurate)
+11:16:08.325224 [info ]: Cached model count updated: 12 models (estimate)
+11:16:08.837733 [info ]: Cached model count updated: 12 models (estimate)
+11:16:08.987047 [error]: dbt1005: Ref 'raw_customers' not found in project. Searched for 'airline_and_rental_services.raw_customers, raw_customers'
+  --> models/staging/stg_customers.sql:6:19
+11:16:08.987104 [error]: dbt1005: Ref 'raw_stores' not found in project. Searched for 'airline_and_rental_services.raw_stores, raw_stores'
+  --> models/staging/stg_locations.sql:6:19
+11:16:08.987129 [error]: dbt1005: Ref 'raw_items' not found in project. Searched for 'airline_and_rental_services.raw_items, raw_items'
+  --> models/staging/stg_order_items.sql:6:19
+11:16:08.987152 [error]: dbt1005: Ref 'raw_orders' not found in project. Searched for 'airline_and_rental_services.raw_orders, raw_orders'
+  --> models/staging/stg_orders.sql:6:19
+11:16:08.987173 [error]: dbt1005: Ref 'raw_products' not found in project. Searched for 'airline_and_rental_services.raw_products, raw_products'
+  --> models/staging/stg_products.sql:6:19
+11:16:08.987229 [error]: dbt1005: Ref 'raw_supplies' not found in project. Searched for 'airline_and_rental_services.raw_supplies, raw_supplies'
+  --> models/staging/stg_supplies.sql:6:19
+11:16:08.988564 [info ]: Cached model count updated: 12 models (accurate)
+11:16:09.409395 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_customers, version: None
+(in models/staging/stg_customers.sql:6:19)
+  --> models/staging/stg_customers.sql:6:19
+11:16:09.409485 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_orders, version: None
+(in models/staging/stg_orders.sql:6:19)
+  --> models/staging/stg_orders.sql:6:19
+11:16:09.409600 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_items, version: None
+(in models/staging/stg_order_items.sql:6:19)
+  --> models/staging/stg_order_items.sql:6:19
+11:16:09.409744 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_products, version: None
+(in models/staging/stg_products.sql:6:19)
+  --> models/staging/stg_products.sql:6:19
+11:16:09.409839 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_supplies, version: None
+(in models/staging/stg_supplies.sql:6:19)
+  --> models/staging/stg_supplies.sql:6:19
+11:16:09.410038 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: raw_stores, version: None
+(in models/staging/stg_locations.sql:6:19)
+  --> models/staging/stg_locations.sql:6:19
+11:16:09.416837 [info ]: Cached model count updated: 12 models (accurate)
+11:16:34.056888 [info ]: Cached model count updated: 6 models (estimate)
+11:16:34.590114 [info ]: Cached model count updated: 6 models (estimate)
+11:16:34.694982 [error]: dbt1005: Ref 'stg_customers' not found in project. Searched for 'airline_and_rental_services.stg_customers, stg_customers'
+  --> models/marts/customers.sql:5:19
+11:16:34.695028 [error]: dbt1005: Ref 'stg_locations' not found in project. Searched for 'airline_and_rental_services.stg_locations, stg_locations'
+  --> models/marts/locations.sql:5:19
+11:16:34.695055 [error]: dbt1005: Ref 'stg_order_items' not found in project. Searched for 'airline_and_rental_services.stg_order_items, stg_order_items'
+  --> models/marts/order_items.sql:5:19
+11:16:34.695087 [error]: dbt1005: Ref 'stg_orders' not found in project. Searched for 'airline_and_rental_services.stg_orders, stg_orders'
+  --> models/marts/order_items.sql:12:19
+11:16:34.695112 [error]: dbt1005: Ref 'stg_products' not found in project. Searched for 'airline_and_rental_services.stg_products, stg_products'
+  --> models/marts/order_items.sql:18:19
+11:16:34.695139 [error]: dbt1005: Ref 'stg_supplies' not found in project. Searched for 'airline_and_rental_services.stg_supplies, stg_supplies'
+  --> models/marts/order_items.sql:24:19
+11:16:34.695169 [error]: dbt1005: Ref 'stg_orders' not found in project. Searched for 'airline_and_rental_services.stg_orders, stg_orders'
+  --> models/marts/orders.sql:5:19
+11:16:34.695201 [error]: dbt1005: Ref 'stg_products' not found in project. Searched for 'airline_and_rental_services.stg_products, stg_products'
+  --> models/marts/products.sql:5:19
+11:16:34.695228 [error]: dbt1005: Ref 'stg_supplies' not found in project. Searched for 'airline_and_rental_services.stg_supplies, stg_supplies'
+  --> models/marts/supplies.sql:5:19
+11:16:34.695296 [warn ]: dbt1005: Ref 'stg_customers' not found in project. Searched for 'airline_and_rental_services.stg_customers, stg_customers'
+  --> generic_tests/relationships_orders_0389c224a99a98c0b58aedb753f052f0.sql:1:115
+11:16:34.696529 [info ]: Cached model count updated: 6 models (accurate)
+11:16:35.089508 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: stg_order_items, version: None
+(in models/marts/order_items.sql:5:19)
+  --> models/marts/order_items.sql:5:19
+11:16:35.089669 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: stg_locations, version: None
+(in models/marts/locations.sql:5:19)
+  --> models/marts/locations.sql:5:19
+11:16:35.089738 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: stg_supplies, version: None
+(in models/marts/supplies.sql:5:19)
+  --> models/marts/supplies.sql:5:19
+11:16:35.089787 [error]: dbt1501: Failed to render SQL not a key type: ref not found for package: airline_and_rental_services, model: stg_products, version: None
+(in models/marts/products.sql:5:19)
+  --> models/marts/products.sql:5:19
+11:16:35.096285 [info ]: Cached model count updated: 6 models (accurate)
+11:16:40.652060 [info ]: Cached model count updated: 0 models (estimate)
+11:16:41.128469 [info ]: Cached model count updated: 0 models (estimate)
+11:16:41.198570 [info ]: Cached model count updated: 0 models (accurate)
+11:16:41.587803 [info ]: Cached model count updated: 0 models (accurate)
+11:16:55.489951 [info ]: Cached model count updated: 0 models (estimate)
+11:16:55.948699 [info ]: Cached model count updated: 0 models (estimate)
+11:16:56.021349 [info ]: Cached model count updated: 0 models (accurate)
+11:16:56.416136 [info ]: Cached model count updated: 0 models (accurate)
+11:17:29.465205 [info ]: Cached model count updated: 0 models (estimate)
+11:17:29.938850 [info ]: Cached model count updated: 0 models (estimate)
+11:17:30.010103 [info ]: Cached model count updated: 0 models (accurate)
+11:17:30.372241 [info ]: Cached model count updated: 0 models (accurate)
+11:20:07.538157 [info ]: Cached model count updated: 0 models (estimate)
+11:20:07.966226 [info ]: Cached model count updated: 0 models (estimate)
+11:20:08.018711 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.intermediate.snowflake_warehouse'.
+  --> dbt_project.yml:25:28
+11:20:08.018911 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.marts.snowflake_warehouse'.
+  --> dbt_project.yml:28:28
+11:20:08.019096 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.staging.snowflake_warehouse'.
+  --> dbt_project.yml:22:28
+11:20:08.036145 [info ]: Cached model count updated: 0 models (accurate)
+11:20:08.439760 [info ]: Cached model count updated: 0 models (accurate)
+11:20:48.000936 [info ]: Cached model count updated: 0 models (estimate)
+11:20:48.448970 [info ]: Cached model count updated: 0 models (estimate)
+11:20:48.501976 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.intermediate.snowflake_warehouse'.
+  --> dbt_project.yml:26:28
+11:20:48.502117 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.marts.snowflake_warehouse'.
+  --> dbt_project.yml:29:28
+11:20:48.502334 [error]: dbt1060: Ignored unexpected key 'snowflake_warehouse'. Try '+snowflake_warehouse' instead. YAML path: 'airline_and_rental_services.staging.snowflake_warehouse'.
+  --> dbt_project.yml:23:28
+11:20:48.513040 [info ]: Cached model count updated: 0 models (accurate)
+11:20:48.932360 [info ]: Cached model count updated: 0 models (accurate)
+11:20:56.452040 [info ]: Cached model count updated: 0 models (estimate)
+11:20:56.839037 [info ]: Cached model count updated: 0 models (estimate)
+11:20:56.898036 [info ]: Cached model count updated: 0 models (accurate)
+11:20:57.307232 [info ]: Cached model count updated: 0 models (accurate)
+11:21:46.864274 [info ]: Cached model count updated: 0 models (estimate)
+11:21:47.286110 [info ]: Cached model count updated: 0 models (estimate)
+11:21:47.344123 [info ]: Cached model count updated: 0 models (accurate)
+11:21:47.712245 [info ]: Cached model count updated: 0 models (accurate)
+11:21:51.976069 [info ]: Cached model count updated: 0 models (estimate)
+11:21:52.023021 [info ]: Cached model count updated: 0 models (accurate)
+11:21:52.023719 [debug]: Incremental compilation - 1 nodes selected: {"source.airline_and_rental_services.rental_data_source.cars"}
+11:21:52.727213 [debug]: Query executed on node unknown:
+describe table "DEMO_ASK_DB"."RENTAL"."CARS"
+11:21:53.570750 [info ]: Cached model count updated: 0 models (accurate)
+11:22:09.583682 [info ]: Cached model count updated: 1 models (estimate)
+11:22:09.988050 [info ]: Cached model count updated: 1 models (estimate)
+11:22:10.063452 [info ]: Cached model count updated: 1 models (accurate)
+11:22:10.453468 [info ]: Cached model count updated: 1 models (accurate)
+11:22:11.324055 [info ]: Cached model count updated: 1 models (estimate)
+11:22:11.369561 [info ]: Cached model count updated: 1 models (accurate)
+11:22:11.369851 [debug]: Incremental compilation - 2 nodes selected: {"model.airline_and_rental_services.rental_model", "source.airline_and_rental_services.rental_data_source.cars"}
+11:22:11.717229 [info ]: Cached model count updated: 1 models (accurate)
+11:22:27.470549 [info ]: Cached model count updated: 1 models (estimate)
+11:22:27.995139 [info ]: Cached model count updated: 1 models (estimate)
+11:22:28.087113 [info ]: Cached model count updated: 1 models (accurate)
+11:22:28.602630 [info ]: Cached model count updated: 1 models (accurate)
+11:22:33.325991 [info ]: Cached model count updated: 1 models (estimate)
+11:22:33.368886 [info ]: Cached model count updated: 1 models (accurate)
+11:22:33.369071 [debug]: Incremental compilation - 1 nodes selected: {"source.airline_and_rental_services.airline_flights_data_source.flights"}
+11:22:33.829384 [debug]: Query executed on node unknown:
+describe table "DEMO_ASK_DB"."AIRLINE"."FLIGHTS"
+11:22:34.435282 [info ]: Cached model count updated: 1 models (accurate)
+11:22:45.347688 [info ]: Cached model count updated: 2 models (estimate)
+11:22:45.799035 [info ]: Cached model count updated: 2 models (estimate)
+11:22:45.955647 [info ]: Cached model count updated: 2 models (accurate)
+11:22:46.509057 [info ]: Cached model count updated: 2 models (accurate)
+11:22:50.520905 [info ]: Cached model count updated: 2 models (estimate)
+11:22:50.563949 [info ]: Cached model count updated: 2 models (accurate)
+11:22:50.564151 [debug]: Incremental compilation - 2 nodes selected: {"model.airline_and_rental_services.airline_flights_model", "source.airline_and_rental_services.airline_flights_data_source.flights"}
+11:22:50.902500 [info ]: Cached model count updated: 2 models (accurate)
+11:23:26.284394 [info ]: Cached model count updated: 2 models (estimate)
+11:23:26.330099 [info ]: Cached model count updated: 2 models (accurate)
+11:23:26.330280 [debug]: Incremental compilation - 2 nodes selected: {"model.airline_and_rental_services.airline_flights_model", "source.airline_and_rental_services.airline_flights_data_source.flights"}
+14:38:57.892507 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+14:38:57.892507 [info ]: 
+==================== Execution Summary =====================
+Finished 'unknown' with 1 warning and 31 errors [3h 24m 5s]

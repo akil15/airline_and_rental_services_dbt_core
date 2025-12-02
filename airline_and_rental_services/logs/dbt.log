@@ -1,0 +1,2268 @@
+==================== 2025-12-02 11:18:10.967465 | 019adec8-c515-7690-9a71-d5988446cba2 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+  Fetching packages.yml
+Installing packages
+Installing dbt_utils: 1.3.2
+11:18:12.402179 [info ]: 
+==================== Execution Summary =====================
+Finished 'deps' successfully for target 'dev' [1.4s]
+==================== 2025-12-02 11:23:02.039624 | 019adecd-3616-7190-8036-028772c86732 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:23:03.443188 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:23:03.645650 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a"
+11:23:03.645645 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_not_null_airline_flights_data_source_flights__ID.701960a102"
+11:23:03.645651 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_not_null_rental_data_source_cars_CAR_TYPE.23066c2e1a"
+11:23:03.654507 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf"
+11:23:03.654553 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_unique_airline_flights_data_source_flights__ID.afb3e9b55c"
+11:23:03.921940 [debug]: Query executed on node test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    _ID as unique_field,
+    count(*) as n_records
+
+from demo_ask_db.rental.cars
+where _ID is not null
+group by _ID
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf"} */
+    Failed [  0.28s] test  demo_ask_schema_dbt_test__audit.source_unique_rental_data_source_cars__ID (models/staging/rental_data_source.yml:11:17)
+   Skipped [-------] model demo_ask_schema.rental_model (table)
+11:23:04.216150 [debug]: Query executed on node test.airline_and_rental_services.source_unique_airline_flights_data_source_flights__ID.afb3e9b55c:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    _ID as unique_field,
+    count(*) as n_records
+
+from demo_ask_db.airline.flights
+where _ID is not null
+group by _ID
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_unique_airline_flights_data_source_flights__ID.afb3e9b55c"} */
+    Failed [  0.56s] test  demo_ask_schema_dbt_test__audit.source_unique_airline_flights_data_source_flights__ID (models/staging/airline_flights_data_source.yml:11:17)
+   Skipped [-------] model demo_ask_schema.airline_flights_model (table)
+11:23:04.321129 [debug]: Query executed on node test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select _ID
+from demo_ask_db.rental.cars
+where _ID is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a"} */
+    Passed [  0.68s] test  demo_ask_schema_dbt_test__audit.source_not_null_rental_data_source_cars__ID
+11:23:04.461699 [debug]: Query executed on node test.airline_and_rental_services.source_not_null_airline_flights_data_source_flights__ID.701960a102:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select _ID
+from demo_ask_db.airline.flights
+where _ID is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_not_null_airline_flights_data_source_flights__ID.701960a102"} */
+    Passed [  0.82s] test  demo_ask_schema_dbt_test__audit.source_not_null_airline_flights_data_source_flights__ID
+11:23:05.181873 [debug]: Query executed on node test.airline_and_rental_services.source_not_null_rental_data_source_cars_CAR_TYPE.23066c2e1a:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select CAR_TYPE
+from demo_ask_db.rental.cars
+where CAR_TYPE is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_not_null_rental_data_source_cars_CAR_TYPE.23066c2e1a"} */
+    Failed [  1.54s] test  demo_ask_schema_dbt_test__audit.source_not_null_rental_data_source_cars_CAR_TYPE (models/staging/rental_data_source.yml:15:17)
+   Skipped [-------] model demo_ask_schema.rental_model (table)
+11:23:05.283514 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 3 errors for target 'dev' [3.2s]
+Processed: 2 models | 5 tests
+Summary: 7 total | 2 success | 3 error | 2 skipped
+==================== 2025-12-02 11:23:51.680152 | 019adecd-f7fe-73c2-88c1-4b6d42b4a5a1 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:23:52.850190 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:23:52.926068 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a"
+11:23:52.931370 [debug]: Writing runtime sql for node "test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf"
+11:23:53.353209 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:23:53.480139 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:23:53.486078 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:23:53.521294 [debug]: Query executed on node test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select _ID
+from demo_ask_db.rental.cars
+where _ID is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_not_null_rental_data_source_cars__ID.d3f4c2467a"} */
+    Passed [  0.60s] test  demo_ask_schema_dbt_test__audit.source_not_null_rental_data_source_cars__ID
+11:23:53.641099 [debug]: Query executed on node test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    _ID as unique_field,
+    count(*) as n_records
+
+from demo_ask_db.rental.cars
+where _ID is not null
+group by _ID
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"test.airline_and_rental_services.source_unique_rental_data_source_cars__ID.38cf9b6faf"} */
+    Failed [  0.71s] test  demo_ask_schema_dbt_test__audit.source_unique_rental_data_source_cars__ID (models/staging/rental_data_source.yml:11:17)
+   Skipped [-------] model demo_ask_schema.rental_model (table)
+11:23:54.808624 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:23:54.855574 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.93s] model demo_ask_schema.airline_flights_model (table)
+11:23:54.920621 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 error for target 'dev' [3.2s]
+Processed: 2 models | 2 tests
+Summary: 4 total | 2 success | 1 error | 1 skipped
+==================== 2025-12-02 11:24:18.866974 | 019adece-6231-79e0-80b7-99e1fde7d490 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:24:19.995841 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:24:20.245486 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:24:20.353988 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:24:20.355889 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:24:20.525762 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:24:20.527788 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:24:21.286709 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:24:21.301283 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:24:21.331407 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.26s] model demo_ask_schema.rental_model (table)
+11:24:21.344521 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.27s] model demo_ask_schema.airline_flights_model (table)
+11:24:21.406425 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' successfully for target 'dev' [2.5s]
+Processed: 2 models
+Summary: 2 total | 2 success
+==================== 2025-12-02 11:24:27.296820 | 019adece-831f-7520-ab62-1a4c5677bb33 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:24:28.211249 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:24:28.473496 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:24:28.574002 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:24:28.575872 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:24:28.625975 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:24:28.627727 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:24:29.296147 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:24:29.320685 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:24:29.346211 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.06s] model demo_ask_schema.airline_flights_model (table)
+11:24:29.367021 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.08s] model demo_ask_schema.rental_model (table)
+11:24:29.427449 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' successfully for target 'dev' [2.1s]
+Processed: 2 models
+Summary: 2 total | 2 success
+==================== 2025-12-02 11:26:36.493919 | 019aded0-7bcc-7060-9c9e-fe4473578ad2 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:26:37.123605 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:26:37.807011 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:26:38.111638 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:26:38.188178 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:26:38.190079 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:26:38.498179 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:26:38.499912 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:26:38.933522 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:26:39.030370 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.15s] model demo_ask_schema.airline_flights_model (table)
+11:26:39.084532 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:26:39.189876 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.31s] model demo_ask_schema.rental_model (table)
+11:26:39.445197 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:26:39.519991 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:26:39.521578 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:26:40.133984 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:26:40.178946 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.70s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:26:40.239412 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'dev' [3.7s]
+Processed: 3 models
+Summary: 3 total | 3 success
+==================== 2025-12-02 11:27:33.874066 | 019aded1-5bf0-7eb2-8dac-c1b5d4c76e31 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:27:34.509492 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:27:35.024947 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:27:35.287335 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:27:35.378096 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:27:35.380024 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:27:35.436878 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:27:35.438726 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:27:36.070901 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:27:36.071787 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:27:36.119968 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.01s] model demo_ask_schema.rental_model (table)
+11:27:36.120913 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.02s] model demo_ask_schema.airline_flights_model (table)
+11:27:36.272287 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:27:36.357791 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+11:27:36.359226 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_drivers_split"
+11:27:36.426853 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:27:36.428221 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:27:36.600734 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:27:36.664503 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+11:27:36.666357 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_info_model"
+11:27:36.963885 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:27:37.002567 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.68s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:27:37.087078 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_drivers_split
+    
+    
+    
+    as (with source_data as (select
+    _id,
+    array_size(DRIVERS) as num_drivers
+from demo_ask_db.demo_ask_schema.rental_model )
+
+select 
+    * 
+from source_data
+
+natural join ( select _ID,DRIVERS from demo_ask_db.demo_ask_schema.rental_model) as origin_data
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_drivers_split"} */
+11:27:37.136222 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+ Succeeded [  1.02s] model demo_ask_schema.intermediate_rental_drivers_split (table)
+11:27:37.207187 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_info_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            RENTAL_INFO:rental_date as rental_date
+            ,
+        
+            RENTAL_INFO:return_date as return_date
+            ,
+        
+            RENTAL_INFO:pickup_location as pickup_location
+            ,
+        
+            RENTAL_INFO:drop_off_location as drop_off_location
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_info_model"} */
+11:27:37.251931 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.65s] model demo_ask_schema.intermediate_rental_info_model (table)
+11:27:37.316683 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'dev' [3.4s]
+Processed: 5 models
+Summary: 5 total | 5 success
+==================== 2025-12-02 11:29:02.624536 | 019aded2-b69e-7cf1-8e3a-d6c93cf51bf3 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:29:03.257672 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:29:03.828778 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:29:04.323083 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:29:04.404340 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:29:04.405831 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:29:04.495356 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:29:04.497194 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:29:05.161580 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:29:05.190962 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:29:05.208391 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.30s] model demo_ask_schema.airline_flights_model (table)
+11:29:05.245624 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.34s] model demo_ask_schema.rental_model (table)
+11:29:05.391160 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+11:29:05.392873 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passengers"
+11:29:05.409633 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:29:05.478141 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+11:29:05.479899 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_info_model"
+11:29:05.569257 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+11:29:05.570954 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_drivers_split"
+11:29:05.779384 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:29:05.829957 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:29:05.831711 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:29:06.078420 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_info_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            RENTAL_INFO:rental_date as rental_date
+            ,
+        
+            RENTAL_INFO:return_date as return_date
+            ,
+        
+            RENTAL_INFO:pickup_location as pickup_location
+            ,
+        
+            RENTAL_INFO:drop_off_location as drop_off_location
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_info_model"} */
+11:29:06.123589 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.69s] model demo_ask_schema.intermediate_rental_info_model (table)
+11:29:06.388231 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:29:06.389162 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+    
+    
+    
+    as (with tmp_table as (
+    select
+        * 
+    from 
+        demo_ask_db.demo_ask_schema.airline_flights_model,
+        lateral flatten(input=>PASSENGERS) as json
+)
+
+select     
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    VALUE,
+    SEATS_AVAILABLE 
+from tmp_table
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passengers"} */
+11:29:06.389175 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_drivers_split
+    
+    
+    
+    as (with source_data as (select
+    _id,
+    array_size(DRIVERS) as num_drivers
+from demo_ask_db.demo_ask_schema.rental_model )
+
+select 
+    * 
+from source_data
+
+natural join ( select _ID,DRIVERS from demo_ask_db.demo_ask_schema.rental_model) as origin_data
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_drivers_split"} */
+11:29:06.431803 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+ Succeeded [  1.19s] model demo_ask_schema.intermediate_rental_drivers_split (table)
+11:29:06.443140 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.66s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:29:06.475164 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+ Succeeded [  1.27s] model demo_ask_schema.intermediate_airline_flights_passengers (table)
+11:29:06.543612 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'dev' [3.9s]
+Processed: 6 models
+Summary: 6 total | 6 success
+==================== 2025-12-02 11:31:37.013890 | 019aded5-11b4-78f2-8979-3d62409c7295 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:31:37.655460 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:31:38.219083 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:38.791404 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:31:38.888771 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:31:38.890683 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:31:38.916567 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:31:38.918517 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:31:39.581509 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:31:39.582642 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:31:39.628615 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.33s] model demo_ask_schema.airline_flights_model (table)
+11:31:39.682450 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.38s] model demo_ask_schema.rental_model (table)
+11:31:39.771533 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+11:31:39.773351 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_drivers_split"
+11:31:39.843444 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+11:31:39.845337 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passengers"
+11:31:39.915542 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:40.059909 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:40.121769 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+11:31:40.123393 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_info_model"
+11:31:40.162612 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:31:40.164583 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:31:40.604256 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_drivers_split
+    
+    
+    
+    as (with source_data as (select
+    _id,
+    array_size(DRIVERS) as num_drivers
+from demo_ask_db.demo_ask_schema.rental_model )
+
+select 
+    * 
+from source_data
+
+natural join ( select _ID,DRIVERS from demo_ask_db.demo_ask_schema.rental_model) as origin_data
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_drivers_split"} */
+11:31:40.673015 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_info_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            RENTAL_INFO:rental_date as rental_date
+            ,
+        
+            RENTAL_INFO:return_date as return_date
+            ,
+        
+            RENTAL_INFO:pickup_location as pickup_location
+            ,
+        
+            RENTAL_INFO:drop_off_location as drop_off_location
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_info_model"} */
+11:31:40.711018 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+ Succeeded [  1.03s] model demo_ask_schema.intermediate_rental_drivers_split (table)
+11:31:40.714049 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:31:40.731083 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.66s] model demo_ask_schema.intermediate_rental_info_model (table)
+11:31:40.771247 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.81s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:31:40.844793 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+    
+    
+    
+    as (with tmp_table as (
+    select
+        * 
+    from 
+        demo_ask_db.demo_ask_schema.airline_flights_model,
+        lateral flatten(input=>PASSENGERS) as json
+)
+
+select     
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    VALUE,
+    SEATS_AVAILABLE 
+from tmp_table
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passengers"} */
+11:31:40.893209 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+ Succeeded [  1.26s] model demo_ask_schema.intermediate_airline_flights_passengers (table)
+11:31:41.093594 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers,
+        lateral flatten(input=>VALUE) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:41.144788 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+11:31:41.146107 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passenger"
+11:31:41.934588 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passenger
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            ORIGIN,
+        
+            DESTINATION,
+        
+            AGENT_FIRST_NAME,
+        
+            AGENT_LAST_NAME,
+        
+            AGENT_EMAIL,
+        
+            DURATION_MINUTES,
+        
+            FLIGHT_CODE,
+        
+            FLIGHT_ID,
+        
+            FLIGHT_DATE,
+        
+            GATE,
+        
+        
+            VALUE:name as name
+            ,
+        
+            VALUE:passenger_id as passenger_id
+            ,
+        
+            VALUE:ticket_number as ticket_number
+            ,
+        
+            VALUE:seat_number as seat_number
+            
+        
+    from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passenger"} */
+11:31:42.066349 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+ Succeeded [  0.97s] model demo_ask_schema.intermediate_airline_flights_passenger (table)
+11:31:42.129068 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'dev' [5.1s]
+Processed: 7 models
+Summary: 7 total | 7 success
+==================== 2025-12-02 11:31:46.462803 | 019aded5-369d-7db1-9075-61e2b272ae89 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:31:47.142754 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:31:47.459462 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:47.721075 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:31:47.825613 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:31:47.827511 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:31:47.873352 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:31:47.875022 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:31:48.508695 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:31:48.740778 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.21s] model demo_ask_schema.rental_model (table)
+11:31:48.889905 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:48.969263 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+11:31:48.971092 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_drivers_split"
+11:31:49.080953 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:31:49.173131 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.64s] model demo_ask_schema.airline_flights_model (table)
+11:31:49.247417 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:49.248166 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+11:31:49.249607 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_info_model"
+11:31:49.303530 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:31:49.305294 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:31:49.362925 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+11:31:49.364602 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passengers"
+11:31:49.592095 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_drivers_split
+    
+    
+    
+    as (with source_data as (select
+    _id,
+    array_size(DRIVERS) as num_drivers
+from demo_ask_db.demo_ask_schema.rental_model )
+
+select 
+    * 
+from source_data
+
+natural join ( select _ID,DRIVERS from demo_ask_db.demo_ask_schema.rental_model) as origin_data
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_drivers_split"} */
+11:31:49.633692 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+ Succeeded [  0.89s] model demo_ask_schema.intermediate_rental_drivers_split (table)
+11:31:49.923212 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_info_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            RENTAL_INFO:rental_date as rental_date
+            ,
+        
+            RENTAL_INFO:return_date as return_date
+            ,
+        
+            RENTAL_INFO:pickup_location as pickup_location
+            ,
+        
+            RENTAL_INFO:drop_off_location as drop_off_location
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_info_model"} */
+11:31:49.924056 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:31:49.970103 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.04s] model demo_ask_schema.intermediate_rental_info_model (table)
+11:31:49.970993 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.71s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:31:50.320565 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+    
+    
+    
+    as (with tmp_table as (
+    select
+        * 
+    from 
+        demo_ask_db.demo_ask_schema.airline_flights_model,
+        lateral flatten(input=>PASSENGERS) as json
+)
+
+select     
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    VALUE,
+    SEATS_AVAILABLE 
+from tmp_table
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passengers"} */
+11:31:50.366437 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+ Succeeded [  1.19s] model demo_ask_schema.intermediate_airline_flights_passengers (table)
+11:31:50.539418 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers,
+        lateral flatten(input=>VALUE) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:31:50.587441 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+11:31:50.589381 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passenger"
+11:31:51.371351 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passenger
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            ORIGIN,
+        
+            DESTINATION,
+        
+            AGENT_FIRST_NAME,
+        
+            AGENT_LAST_NAME,
+        
+            AGENT_EMAIL,
+        
+            DURATION_MINUTES,
+        
+            FLIGHT_CODE,
+        
+            FLIGHT_ID,
+        
+            FLIGHT_DATE,
+        
+            GATE,
+        
+        
+            VALUE:name as name
+            ,
+        
+            VALUE:passenger_id as passenger_id
+            ,
+        
+            VALUE:ticket_number as ticket_number
+            ,
+        
+            VALUE:seat_number as seat_number
+            
+        
+    from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passenger"} */
+11:31:51.417270 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+ Succeeded [  0.87s] model demo_ask_schema.intermediate_airline_flights_passenger (table)
+11:31:51.480935 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' with 1 warning for target 'dev' [5.0s]
+Processed: 7 models
+Summary: 7 total | 7 success
+==================== 2025-12-02 11:37:20.719754 | 019adeda-504e-7992-aa4c-9eb658c728eb ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+11:37:21.420545 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+11:37:21.997542 [debug]: Query executed on node unknown:
+show terse schemas in database demo_ask_db
+    limit 10000
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:37:22.432680 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+11:37:22.525853 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+SHOW OBJECTS IN SCHEMA "DEMO_ASK_DB"."DEMO_ASK_SCHEMA" LIMIT 10000
+11:37:22.527863 [debug]: Writing runtime sql for node "model.airline_and_rental_services.airline_flights_model"
+11:37:23.027287 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+11:37:23.028799 [debug]: Writing runtime sql for node "model.airline_and_rental_services.rental_model"
+11:37:23.232604 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.airline_flights_model
+    
+    
+    
+    as (select
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    PASSENGERS, 
+    SEATS_AVAILABLE    
+from 
+    demo_ask_db.airline.flights
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.airline_flights_model"} */
+11:37:23.332481 [debug]: Query executed on node model.airline_and_rental_services.airline_flights_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.26s] model demo_ask_schema.airline_flights_model (table)
+11:37:23.494004 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+11:37:23.495756 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passengers"
+11:37:23.602694 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.rental_model
+    
+    
+    
+    as (select
+    _ID,
+    CAR_TYPE, 
+    DRIVERS, 
+    EMAIL, 
+    FIRST_NAME,
+    LAST_NAME, 
+    LICENSE_PLATE, 
+    OPTIONS, 
+    PRICE_USD, 
+    RENTAL_ID, 
+    RENTAL_INFO
+from 
+    demo_ask_db.rental.cars
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.rental_model"} */
+11:37:23.674816 [debug]: Query executed on node model.airline_and_rental_services.rental_model:
+use warehouse demo_ask_wh
+ Succeeded [  1.60s] model demo_ask_schema.rental_model (table)
+11:37:23.834450 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:37:23.905165 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+11:37:23.906997 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_drivers_split"
+11:37:23.948758 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+11:37:23.950249 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_options_model"
+11:37:24.156089 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:37:24.349676 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+11:37:24.351331 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_rental_info_model"
+11:37:24.567075 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+    
+    
+    
+    as (with tmp_table as (
+    select
+        * 
+    from 
+        demo_ask_db.demo_ask_schema.airline_flights_model,
+        lateral flatten(input=>PASSENGERS) as json
+)
+
+select     
+    _ID,
+    AGENT_EMAIL, 
+    AGENT_FIRST_NAME, 
+    AGENT_LAST_NAME, 
+    DESTINATION, 
+    DURATION_MINUTES, 
+    EQUIPMENT, 
+    FLIGHT_CODE, 
+    FLIGHT_DATE, 
+    FLIGHT_ID, 
+    FLOW_PUBLISHED_AT, 
+    GATE, 
+    ORIGIN, 
+    VALUE,
+    SEATS_AVAILABLE 
+from tmp_table
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passengers"} */
+11:37:24.568444 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_options_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            OPTIONS:extra_driver as extra_driver
+            ,
+        
+            OPTIONS:gps as gps
+            ,
+        
+            OPTIONS:child_seat as child_seat
+            ,
+        
+            OPTIONS:insurance as insurance
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_options_model"} */
+11:37:24.570012 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_drivers_split
+    
+    
+    
+    as (with source_data as (select
+    _id,
+    array_size(DRIVERS) as num_drivers
+from demo_ask_db.demo_ask_schema.rental_model )
+
+select 
+    * 
+from source_data
+
+natural join ( select _ID,DRIVERS from demo_ask_db.demo_ask_schema.rental_model) as origin_data
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_drivers_split"} */
+11:37:24.607756 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passengers:
+use warehouse demo_ask_wh
+ Succeeded [  1.27s] model demo_ask_schema.intermediate_airline_flights_passengers (table)
+11:37:24.620163 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.74s] model demo_ask_schema.intermediate_rental_options_model (table)
+11:37:24.662085 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_drivers_split:
+use warehouse demo_ask_wh
+ Succeeded [  0.99s] model demo_ask_schema.intermediate_rental_drivers_split (table)
+11:37:24.883700 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers,
+        lateral flatten(input=>VALUE) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+11:37:24.884553 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_rental_info_model
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            RENTAL_ID,
+        
+            PRICE_USD,
+        
+            LICENSE_PLATE,
+        
+            LAST_NAME,
+        
+            FIRST_NAME,
+        
+            EMAIL,
+        
+            CAR_TYPE,
+        
+        
+            RENTAL_INFO:rental_date as rental_date
+            ,
+        
+            RENTAL_INFO:return_date as return_date
+            ,
+        
+            RENTAL_INFO:pickup_location as pickup_location
+            ,
+        
+            RENTAL_INFO:drop_off_location as drop_off_location
+            
+        
+    from demo_ask_db.demo_ask_schema.rental_model
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_rental_info_model"} */
+11:37:24.925938 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+use warehouse demo_ask_wh
+ Succeeded [  0.76s] model demo_ask_schema.intermediate_rental_info_model (table)
+11:37:24.930901 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+11:37:24.932254 [debug]: Writing runtime sql for node "model.airline_and_rental_services.intermediate_airline_flights_passenger"
+11:37:25.794650 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+create or replace transient  table demo_ask_db.demo_ask_schema.intermediate_airline_flights_passenger
+    
+    
+    
+    as (with source_model as (
+    
+
+    
+
+    
+
+    
+        
+    
+
+    select
+        
+            _ID,
+        
+            ORIGIN,
+        
+            DESTINATION,
+        
+            AGENT_FIRST_NAME,
+        
+            AGENT_LAST_NAME,
+        
+            AGENT_EMAIL,
+        
+            DURATION_MINUTES,
+        
+            FLIGHT_CODE,
+        
+            FLIGHT_ID,
+        
+            FLIGHT_DATE,
+        
+            GATE,
+        
+        
+            VALUE:name as name
+            ,
+        
+            VALUE:passenger_id as passenger_id
+            ,
+        
+            VALUE:ticket_number as ticket_number
+            ,
+        
+            VALUE:seat_number as seat_number
+            
+        
+    from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers
+
+
+)
+
+select 
+    *
+from source_model
+    )
+
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","node_id":"model.airline_and_rental_services.intermediate_airline_flights_passenger"} */
+11:37:25.837964 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+use warehouse demo_ask_wh
+ Succeeded [  0.95s] model demo_ask_schema.intermediate_airline_flights_passenger (table)
+11:37:25.917754 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'dev' [5.2s]
+Processed: 7 models
+Summary: 7 total | 7 success
+==================== 2025-12-02 13:44:34.628775 | 019adf4e-cc12-7fa2-bbf2-5253c4055d73 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:44:35.371434 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:44:35.372170 [error]: dbt1005: Ref 'marts_airline_and_rental_summary' not found in project. Searched for 'airline_and_rental_services.marts_airline_and_rental_summary, marts_airline_and_rental_summary'
+  --> models/marts/marts_airline_and_rental_aggregated_view_per_passenger.sql:18:5
+13:44:35.632977 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 2 errors for target 'dev' [1.0s]
+==================== 2025-12-02 13:45:25.085973 | 019adf4f-915b-7ba2-8127-dff998efbecd ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:45:25.620943 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:45:25.621013 [error]: dbt1005: Ref 'marts_airline_and_rental_summary' not found in project. Searched for 'airline_and_rental_services.marts_airline_and_rental_summary, marts_airline_and_rental_summary'
+  --> models/marts/marts_airline_and_rental_aggregated_view_per_passenger.sql:18:5
+13:45:25.888872 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 2 errors for target 'dev' [802ms]
+==================== 2025-12-02 13:45:59.390022 | 019adf50-175c-7d73-9643-5554c4b8014d ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:45:59.810998 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:46:00.099252 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 error for target 'dev' [709ms]
+==================== 2025-12-02 13:50:42.419573 | 019adf54-68f1-7bd0-b4e1-d738ed309af7 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:50:42.937972 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:50:43.222807 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' with 1 error for target 'dev' [803ms]
+==================== 2025-12-02 13:52:42.870813 | 019adf56-3f74-7a12-99bf-1e69c77addcf ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:52:43.446801 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:52:43.742777 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error for target 'dev' [871ms]
+==================== 2025-12-02 13:58:35.677798 | 019adf5b-a19c-79d2-ab1b-aa54c63c9dcd ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:58:36.113048 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:58:36.446238 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error for target 'dev' [768ms]
+==================== 2025-12-02 13:59:04.215533 | 019adf5c-1115-7101-8ff0-e77b8e812834 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:59:04.612542 [error]: dbt1005: Ref 'marts_rental_orders_summary' not found in project. Searched for 'airline_and_rental_services.marts_rental_orders_summary, marts_rental_orders_summary'
+  --> models/marts/ marts_airline_and_rental_summary.sql:28:22
+13:59:04.910601 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error for target 'dev' [695ms]
+==================== 2025-12-02 13:59:37.138171 | 019adf5c-91b0-75c3-9b0a-c2ead1b61d83 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:59:37.597642 [warn ]: dbt1000: The selection criterion 'fqn:marts_airline_and_rental_summary' does not match any enabled nodes
+13:59:37.598027 [warn ]: dbt1000: Nothing to do. Try checking your model configs and model specification args
+13:59:37.877432 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+13:59:37.972735 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 3 warnings for target 'dev' [834ms]
+==================== 2025-12-02 13:59:44.407692 | 019adf5c-ae16-7043-98d7-3928219d25f5 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+13:59:44.870050 [warn ]: dbt1000: The selection criterion 'fqn:marts_rental_orders_summary' does not match any enabled nodes
+13:59:44.870092 [warn ]: dbt1000: Nothing to do. Try checking your model configs and model specification args
+13:59:45.073993 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+13:59:45.155042 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 3 warnings for target 'dev' [747ms]
+==================== 2025-12-02 14:00:26.548995 | 019adf5d-52b3-72e2-a734-c40597a9f07c ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+14:00:27.222452 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:00:27.553330 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [1.0s]
+Processed: 1 model
+Summary: 1 total | 1 success
+==================== 2025-12-02 14:00:49.449754 | 019adf5d-ac28-7d72-adec-4bafe5432802 ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+14:00:49.900828 [warn ]: dbt1000: The selection criterion 'fqn:marts_rental_orders_summary' does not match any enabled nodes
+14:00:49.900868 [warn ]: dbt1000: Nothing to do. Try checking your model configs and model specification args
+14:00:50.104303 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:00:50.176002 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 3 warnings for target 'dev' [726ms]
+==================== 2025-12-02 14:05:10.989703 | 019adf61-a9cc-77b0-8a7a-616c6d1e63ea ====================
+dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+14:05:11.656811 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:05:11.802551 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [812ms]
+Processed: 1 model
+Summary: 1 total | 1 success

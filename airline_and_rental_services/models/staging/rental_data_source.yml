@@ -1,0 +1,19 @@
+version: 1
+sources:
+  - name: rental_data_source
+    database: demo_ask_db
+    schema: rental
+    tables:
+      - name: cars
+        columns:
+          - name: _ID
+          - name: CAR_TYPE
+          - name: DRIVERS
+          - name: EMAIL
+          - name: FIRST_NAME
+          - name: LAST_NAME
+          - name: LICENSE_PLATE
+          - name: OPTIONS
+          - name: PRICE_USD
+          - name: RENTAL_ID
+          - name: RENTAL_INFO

@@ -1,0 +1,21 @@
+version: 1
+sources:
+  - name: airline_flights_data_source
+    database: demo_ask_db
+    schema: airline
+    tables:
+      - name: flights
+        columns:
+          - name: _ID
+          - name: AGENT_EMAIL
+          - name: AGENT_FIRST_NAME
+          - name: AGENT_LAST_NAME
+          - name: DESTINATION
+          - name: DURATION
+          - name: EQUIPMENT
+          - name: FLIGHT_CODE
+          - name: FLIGHT_DATE
+          - name: FLIGHT_ID
+          - name: ORIGIN
+          - name: PASSENGERS
+          - name: SEATS_AVAILABLE
