@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="_ID", model=get_where_subquery(source('airline_flights_data_source', 'flights'))) }}

@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="_ID", model=get_where_subquery(source('rental_data_source', 'cars'))) }}

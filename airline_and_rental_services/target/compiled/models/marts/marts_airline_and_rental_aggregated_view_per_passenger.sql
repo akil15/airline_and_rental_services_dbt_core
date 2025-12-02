@@ -16,3 +16,4 @@ select
     ) as PASSENGER_INFO
 from
     demo_ask_db.demo_ask_schema.marts_airline_and_rental_summary
+limit 10000
