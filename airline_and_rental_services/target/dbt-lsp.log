@@ -161,3 +161,39 @@ describe table "DEMO_ASK_DB"."AIRLINE"."FLIGHTS"
 14:38:57.892507 [info ]: 
 ==================== Execution Summary =====================
 Finished 'unknown' with 1 warning and 31 errors [3h 24m 5s]
+==================== 2025-12-02 14:43:10.927933 | f89cd730-9c8c-441a-a568-35c518a7b373 ====================
+14:43:10.928008 [info ]: Starting dbt LSP server
+14:43:10.928045 [info ]: Connecting to LSP client on port 8000
+14:43:10.928210 [info ]: Successfully connected to LSP client
+14:43:10.928224 [info ]: Creating LSP service...
+14:43:11.077556 [info ]: Creating LSP server...
+14:43:11.077574 [info ]: Starting LSP server...
+14:43:11.750051 [info ]: Cached model count updated: 11 models (estimate)
+14:43:11.848328 [info ]: Cached model count updated: 11 models (accurate)
+14:43:12.285084 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:43:12.412409 [error]: dbt0227: No column SURROGATE_KEYS found. Available are 
+  --> models/marts/marts_airline_and_rental_aggregated_view_per_passenger.sql:2:5
+14:43:12.910163 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_info_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>RENTAL_INFO) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:43:13.117746 [debug]: Query executed on node model.airline_and_rental_services.intermediate_rental_options_model:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.rental_model,
+        lateral flatten(input=>OPTIONS) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:43:13.253034 [debug]: Query executed on node model.airline_and_rental_services.intermediate_airline_flights_passenger:
+select distinct
+            json.key as column_name
+        from demo_ask_db.demo_ask_schema.intermediate_airline_flights_passengers,
+        lateral flatten(input=>VALUE) json
+/* {"app":"dbt","dbt_version":"2.0.0","profile_name":"airline_and_rental_services","target_name":"dev","connection_name":""} */
+14:43:13.282380 [info ]: Cached model count updated: 11 models (accurate)
+14:44:13.594726 [info ]: Cached model count updated: 11 models (estimate)
+14:44:13.646377 [info ]: Cached model count updated: 11 models (accurate)
+14:44:13.646864 [debug]: Incremental compilation - 12 nodes selected: {"model.airline_and_rental_services.airline_flights_model", "model.airline_and_rental_services.intermediate_airline_flights_passenger", "model.airline_and_rental_services.intermediate_airline_flights_passengers", "model.airline_and_rental_services.intermediate_rental_info_model", "model.airline_and_rental_services.intermediate_rental_options_model", "model.airline_and_rental_services.marts_airline_and_rental_aggregated_view_per_passenger", "model.airline_and_rental_services.marts_airline_and_rental_summary", "model.airline_and_rental_services.marts_airline_flights_summary", "model.airline_and_rental_services.marts_rental_orders_summary", "model.airline_and_rental_services.rental_model", "source.airline_and_rental_services.airline_flights_data_source.flights", "source.airline_and_rental_services.rental_data_source.cars"}
+14:44:13.976347 [warn ]: dbt1000: Detected unsafe introspection which may lead to non-deterministic static analysis. To suppress this warning, set static_analysis to 'unsafe' in the nodes' configuration. Learn more: https://docs.getdbt.com/docs/fusion/new-concepts. Nodes: 'model.airline_and_rental_services.intermediate_airline_flights_passenger' (execute), 'model.airline_and_rental_services.intermediate_rental_info_model' (execute), 'model.airline_and_rental_services.intermediate_rental_options_model' (execute)
+14:44:14.119623 [info ]: Cached model count updated: 11 models (accurate)

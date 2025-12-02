@@ -9,7 +9,7 @@ with
                 24
             ) as surrogate_keys,
             *
-        from {{ ref("marts_airline_flights_summary") }} as marts_airline_flights_summary
+        from demo_ask_db.demo_ask_schema.marts_airline_flights_summary as marts_airline_flights_summary
         natural join
             (
                 select
@@ -25,7 +25,7 @@ with
                     gps,
                     child_seat,
                     insurance
-                from {{ ref("marts_rental_orders_summary") }}
+                from demo_ask_db.demo_ask_schema.marts_rental_orders_summary
             ) as marts_rental_orders_summary
     )
 
