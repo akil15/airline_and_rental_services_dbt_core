@@ -59,7 +59,7 @@ CREATE DATABASE IF NOT EXISTS demo_ask_db;
 CREATE ROLE IF NOT EXISTS demo_ask_role;
 GRANT USAGE ON WAREHOUSE demo_ask_wh TO ROLE demo_ask_role;
 GRANT OWNERSHIP ON DATABASE demo_ask_db TO ROLE demo_ask_role;
-GRANT ROLE demo_ask_role TO USER akilsalhab;
+GRANT ROLE demo_ask_role TO USER {YOUR_SNOWFLAKE_USER};
 ```
 
 ## Leveraging Census Reverse ETL
